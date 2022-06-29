@@ -16,6 +16,15 @@ au BufWrite /private/etc/pw.* set nowritebackup nobackup
 set nobackup	
 set nowritebackup	
 let skip_defaults_vim=1
+
+let g:tex_flavor='latex'
+"let g:vimtex_compiler_method='latexrun'
+"set grepprg =grep\ -nH\ $*
+"let g: tex_falvor='latex'
+"let g:Tex_DefaultTargetFormat='pdf'
+let g:vimtex_view_method='zathura'
+let g:latex_view_general_viewer='zathura'
+let g:vimtex_quickfix_mode =1
 "let g:vim_markdown_folding_disabled=1
 let g:pydiction_location = '/Users/wangchenchen/.vim/tools/pydiction/complete-dict'
 let g:pydiction_menu_height=20
@@ -128,6 +137,8 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType java set omnifunc=javacomplete#Complet
 
 
+filetype plugin indent on    " required
+syntax enable
 set nocompatible              " be iMproved, required
 "filetype off                  " required
 
@@ -162,7 +173,6 @@ set shellslash
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -182,9 +192,6 @@ Plugin 'git://git.wincent.com/command-t.git'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'lervag/vimtex'
-let g:tex_falvor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_qicfix_mode=0
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
@@ -234,7 +241,7 @@ let g:mdip_imgname='image'
 
 "All of your Plugins must be added before the following line
 call vundle#end()            " required
-"filetype plugin indent on    " required
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -376,7 +383,8 @@ let g:coc_global_extensions = [
  \'coc-tslint-plugin',
  \'coc-vetur',
  \'coc-yaml',
- \'coc-yank'
+ \'coc-yank',
+ \'coc-translator'
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
@@ -454,7 +462,7 @@ endif
 " Symbol renaming.
 
 nmap <leader>rn <Plug>(coc-rename)
-
+nnoremap aa :CocCommand explorer<CR>
 
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -586,3 +594,15 @@ let g:mkdp_markdown_css='~/Desktop/WCC/markdown/github-css-sytle-markdown/github
 set foldenable	
 let g:vim_markdown_folding_level=6
 
+
+
+"set configuration for latex
+"function ComplieWithXeTeX()
+	"let g:Tex_CompileRule_pdf = 'latexmk -pdf -pvc  $*'
+"endfunction
+"map <Leader>lx :<C-U>call ComplieWithXeTeX()<CR>
+
+"function CleanTempFiles()
+	"execute '!latexmk -c'
+"endfunction
+"map <Leader>lc :<C-U>call CleanTempFiles()<CR>
