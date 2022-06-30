@@ -17,15 +17,6 @@ set nobackup
 set nowritebackup	
 let skip_defaults_vim=1
 
-let g:tex_flavor='latex'
-"let g:vimtex_compiler_method='latexrun'
-"set grepprg =grep\ -nH\ $*
-"let g: tex_falvor='latex'
-"let g:Tex_DefaultTargetFormat='pdf'
-let g:vimtex_view_method='zathura'
-let g:latex_view_general_viewer='zathura'
-let g:vimtex_quickfix_mode =1
-"let g:vim_markdown_folding_disabled=1
 let g:pydiction_location = '/Users/wangchenchen/.vim/tools/pydiction/complete-dict'
 let g:pydiction_menu_height=20
 
@@ -161,6 +152,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 let g:UltiSnipsSnippetsDirectories=[$HOME.'/.vim/bundle/vim-snippets/UltiSnips', "~/.vim/UltiSnips"]
 "Plugin 'vim-latex/vim-latex'
+
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 "filetype plugin on
 " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
@@ -191,7 +183,22 @@ Plugin 'git://git.wincent.com/command-t.git'
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
+Plugin 'xuhdev/vim-latex-live-preview'
+let g:livepreview_previewer='zathura'
+let g:livepreview_engine='latexmk'
 Plugin 'lervag/vimtex'
+
+let g:tex_flavor='latex'
+"let g:vimtex_compiler_method='latexrun'
+"set grepprg =grep\ -nH\ $*
+"let g: tex_falvor='latex'
+"let g:Tex_DefaultTargetFormat='pdf'
+let g:vimtex_view_method='zathura'
+let g:latex_view_general_viewer='zathura'
+let g:vimtex_quickfix_mode =1
+let g:vimtex_view_enabled=1
+let g:vimtex_view_automatic=1
+"let g:vim_markdown_folding_disabled=1
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
